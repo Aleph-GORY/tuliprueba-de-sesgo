@@ -1,0 +1,63 @@
+La prueba de Bechdel-Williams tiene 3 preguntas sencillas acerca de un dialogo.
+
+Aparecen al menos dos personajes femeninos.
+Que mantienen una conversación.
+Que no tiene como tema un hombre.
+
+Un dialogo es una conversación finita entre dos o más personas dividido en lineas. Un dialogo dramatico es la colección de todas las frases que todos los personajes dicen.
+Las acotaciones son todas las acciones o aclaraciónes respecto al entorno en el cual sucede la historia.
+
+La prueba de Bechdel evalua los dialogos. Evalua a los personajes (¿son hombres o mujeres? (¿podrian ser otra cosa?)). Evalua si entre ellos dos existe una conversación, esto es,
+dada una serie de frases de un personaje P_1, exista un elemento en el conjunto de conversaciones tales que exista una respuesta coherente de P_2 a la (o las) frases de P_1.
+
+El ultimo punto es que esta conversación no tenga como tema principal a un hombre, esto es, que en la conversación, la discusión principal no sea un personaje masculino P_i 
+o un hombre en general.
+
+
+
+Posibles extensiones:
+
+- ¿Aparecen al menos dos personajes de alguna disidencia sexual? (Lesbianas, homosexuales, bisexuales, etc...)
+- ¿Mantienen una conversacion?
+- ¿No tiene como tema a un hombre o una pareja heterosexual?
+- ¿Se discute o se trata la relación afectiva de alguno de los personajes que son parte del colectivo LGTB+?
+
+
+
+Parametros:
+Recibe: Una escena.
+Devuelve: Una tupla (x,y,z,w) que se describe como (x = TRUE/FALSE, y = TRUE/FALSE, z = un valor en [0,1], w = TRUE/FALSE 
+Funcion (Una escena (Una lista finita y segmentada de dialogos delimitados por ESCENAS, ACOTACIONES o algun otro elemento guionistico para evaluarse)):
+
+Si existen dos o más personajes femeninos que sostengan un dialogo (Que no solo sean extras en la pelicula): X = True. Falso en cualquier otro caso.
+Si entre al menos dos personajes femeninos existe un dialogo: Y = True. Falso en cualquier otro caso.
+    Función de contexto:
+    ¿La conversación gira en torno a que idea?
+        ¿Se discute acerca de uno de los personajes INVOLUCRADOS en la conversación? y/n
+        alpha_1 = x \in [0,1]
+        ¿Se discute acerca de uno de los personajes DEL CONJUNTO DE PERSONAJES de la pelicula? y/n 
+        alpha_2 = x \in [0,1]
+        ¿Se discute acerca de un personaje que no es parte DEL CONJUNTO DE PERSONAJES de la pelicula? y/n
+        alpha_3 = x \in [0,1]
+        Si la respuesta es si a alguno de las preguntas, a cada pregunta sigue:
+            ¿La conversación tiene como tema a un personaje FEMENINO? y/n
+                Si la respuesta es si,
+                Z = 1
+        Z = 0  en cualquier caso
+
+
+        ¿Se discute sobre algo distinto a una persona? y/n
+            Si la respuesta es si:
+                alpha_4 = x \in [0,1]
+
+        Z = d_1*alpha_1 + d_2*alpha_2 + d_3*alpha_3 + d_4*alpha_4 t.q Z \in [0,1]
+        Opcional: Esa discusión, ¿no sostiene un estereotipo asociado a la femenidad o un rol de genero?
+
+
+Si ((X) & (Y) & (Z > 0.80)) entonces W= True.
+
+Si W = True, la escena pasa (tentativamente) la prueba de Bechdel-Williams
+
+
+
+
