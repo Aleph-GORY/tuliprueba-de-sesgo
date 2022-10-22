@@ -10,8 +10,6 @@ class ErrorBoundary extends Component {
         };
     };
 
-    css = `#root > div { justify-content: center; align-items: center; display: flex; }`;
-
     static getDerivedStateFromError(e) {
         console.log(e);
         return { hasError: true };
@@ -22,7 +20,6 @@ class ErrorBoundary extends Component {
 
         if (!hasError) return (children);
         return (<>
-            <style>{this.css}</style>
             <Result status="500" title="ERROR" subTitle={"OCURRIO UN ERROR EN LA APLICACIÓN"} extra={<Button onClick={() => { window.location = "/"; }} className="t-black">IR A INICIO</Button>} />
         </>);
     };

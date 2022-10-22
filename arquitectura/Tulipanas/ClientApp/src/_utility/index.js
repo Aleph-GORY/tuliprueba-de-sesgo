@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { notification, Empty, Spin, Modal } from 'antd';
+import { notification, Spin } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -52,16 +52,6 @@ export const Alert = (msg, type, time = null) => {
         placement: "bottomTop",
         icon: <FontAwesomeIcon icon={['fas', ico]} />,
     });
-};
-
-export const changeTitle = (title) => {
-    document.title = `${title ? title.toUpperCase() : ""} | B2BSITE COL`;
-};
-
-export const renderEmpty = () => {
-    return (<>
-        <Empty description="Sin datos" />
-    </>);
 };
 
 export const Loader = ({ loading, children }) => {

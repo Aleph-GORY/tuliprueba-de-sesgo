@@ -6,9 +6,7 @@ const PrivateLayout = ({ children }) => {
         <div className="main-page">
             <div className="upperPage">
                 <Layout className="page">
-                    <Layout className="bg-white">
-                        {children}
-                    </Layout>
+                    {children}
                 </Layout>
             </div>
         </div>

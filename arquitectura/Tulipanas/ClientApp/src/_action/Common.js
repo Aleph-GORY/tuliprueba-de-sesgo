@@ -1,19 +1,15 @@
-import { serverCall, Alert } from '../_utility';
-import { CAMBIAR_CONTRA, CAMBIAR_CONTRA_SUCCESS, CAMBIAR_CONTRA_ERROR } from '../_constant';
+import { serverCall } from '../_utility';
 
-export const ChangePassword = (data, callback = null) => async (dispatch) => {
-    dispatch({ type: CAMBIAR_CONTRA });
+export const UploadFile = (data, callback = null,errorCallback)  => {
     serverCall({
-        type: "PUT",
-        url: `SecurityServices/cambiarContra`,
+        type: "POST",
+        url: `Common/UploadFile`,
         body: data,
-        success: () => {
-            dispatch({ type: CAMBIAR_CONTRA_SUCCESS });
-            Alert("Contraseña cambiada con éxito", "success");
-            if (callback) callback();
+        success: (data) => {
+            if (callback) callback(data);
         },
         fail: () => {
-            dispatch({ type: CAMBIAR_CONTRA_ERROR });
+            if (errorCallback) errorCallback();
         },
     });
 };

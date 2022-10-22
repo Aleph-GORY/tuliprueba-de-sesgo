@@ -1,43 +1,26 @@
-/*FONT FACES*/
-
-@font-face {
-  font-family: 'NunitoSans';
-  font-weight: 800;
-  src: local('NunitoSans'), url(../fonts/NunitoSans-ExtraBold.ttf) format('truetype');
-}
-
-@font-face {
-  font-family: 'NunitoSans';
-  font-weight: 400;
-  src: local('NunitoSans'), url(../fonts/NunitoSans-Regular.ttf) format('truetype');
-}
-
-@font-face {
-  font-family: 'NunitoSans';
-  font-weight: 200;
-  src: local('NunitoSans'), url(../fonts/NunitoSans-ExtraLight.ttf) format('truetype');
-}
-
-/*FONT FACES*/
-
 /*CSS COMUN*/
 
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: "NunitoSans", sans-serif;
+  font-family: 'Unna', serif;
   font-weight: 400;
   line-height: 1.5;
 }
 
-html, body, #root, #root>div {
+html, body, #root, #root>div, .main-page, .upperPage, .ant-layout.page {
   height: 100%;
   width: 100%;
   overflow-x: hidden;
+  background-color: #FFDCB4;
 }
 
-#root {
-  background-color: #ffffff;
+.ant-layout.page {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  align-items: center;
 }
 
 input:-webkit-autofill {
@@ -53,21 +36,53 @@ input:-webkit-autofill:focus {
 }
 
 .notifZ.info .ant-notification-notice-icon {
-    color: #0f5d94;
+  color: #0f5d94;
 }
 
 .notifZ.success .ant-notification-notice-icon {
-    color: #28a745;
+  color: #28a745;
 }
 
 .notifZ.warning .ant-notification-notice-icon {
-    color: #ffc107;
+  color: #ffc107;
 }
 
 .notifZ.error .ant-notification-notice-icon {
-    color: #dc3545;
+  color: #dc3545;
 }
 
+.mainPage {
+  margin: 0px 60px;
+}
+
+.mainPage h1 {
+  font-size: 60px;
+  margin-bottom: 80px;
+}
+
+.mainPage h4 {
+  font-size: 25px;
+  margin-bottom: 80px;
+}
+
+.list{
+  font-size: 25px;
+  list-style: decimal;
+}
+
+.mainButton{
+  background-color: #212529;
+  border-color: #1a1818;
+}
+
+.mainButton:focus, .mainButton:hover{
+  background-color: #363636;
+  border-color: #212529;
+}
+
+.ant-upload-list {
+  display: none !important;
+}
 /*CSS COMUN*/
 
 /*RESPONSIVE*/
@@ -97,28 +112,30 @@ input:-webkit-autofill:focus {
 
 /*RESPONSIVE*/
 
-@media screen and (max-width: 1199px) {
-  
-}
+@media screen and (max-width: 1199px) {}
 
-@media only screen and (max-width:991px) {
-  
-}
+@media only screen and (max-width:991px) {}
 
-@media only screen and (min-width:992px) {
- 
-}
+@media only screen and (min-width:992px) {}
 
-@media screen and (max-width: 991px) {
-  
-}
+@media screen and (max-width: 991px) {}
 
-@media screen and (max-width: 767px) {
- 
-}
+@media screen and (max-width: 767px) {}
 
 @media only screen and (max-width:575px) {
+  .mainPage {
+    margin: 0px 10px !important;
+  }
   
+  .mainPage h1 {
+    font-size: 40px;
+    margin-bottom: 40px;
+  }
+  
+  .mainPage h4, .list {
+    font-size: 20px;
+    margin-bottom: 40px;
+  }
 }
 
 /*RESPONSIVE*/

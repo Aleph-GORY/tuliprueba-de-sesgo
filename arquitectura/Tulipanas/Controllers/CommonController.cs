@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Tulipanas.Controllers
 {
@@ -17,8 +18,8 @@ namespace Tulipanas.Controllers
         }*/
 
 
-        [HttpPost, Route("api/[controller]/KeepSessionAlive")]
-        public void KeepSessionAlive()
+        [HttpPost, Route("api/[controller]/UploadFile")]
+        public void UploadFile(IFormFile file)
         {
         }
     }
