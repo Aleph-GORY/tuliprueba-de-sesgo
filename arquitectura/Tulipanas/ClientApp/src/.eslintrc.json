@@ -1,0 +1,11 @@
+{
+    "parser": "@babel/eslint-parser",
+    "extends": "react-app",
+    "env": {
+        "browser": true
+    },
+    "rules": {
+        "react-hooks/exhaustive-deps": "off",
+        "no-template-curly-in-string": "off"
+    }
+}

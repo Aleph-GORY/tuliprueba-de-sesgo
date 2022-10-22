@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\Users\cmira\Documents\Publicaciones\Tulipanas</_PublishTargetUrl>
+    <History>True|2022-10-22T17:14:18.0207704Z;True|2022-10-22T11:22:45.7057012-05:00;True|2022-10-22T11:10:08.0718968-05:00;True|2022-10-22T11:08:08.4893263-05:00;</History>
+  </PropertyGroup>
+</Project>

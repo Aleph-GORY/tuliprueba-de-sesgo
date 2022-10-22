@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32210.238
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tulipanas", "Tulipanas\Tulipanas.csproj", "{1A269001-D28F-482C-B072-A68730A79A99}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1A269001-D28F-482C-B072-A68730A79A99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A269001-D28F-482C-B072-A68730A79A99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A269001-D28F-482C-B072-A68730A79A99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A269001-D28F-482C-B072-A68730A79A99}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F316FB24-4F9F-4863-BDDE-66F62DC3909E}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 2
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Tulipanas\\Tulipanas.csproj
+		SccProjectName1 = Tulipanas
+		SccLocalPath1 = Tulipanas
+	EndGlobalSection
+EndGlobal

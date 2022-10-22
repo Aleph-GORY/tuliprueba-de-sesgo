@@ -1,0 +1,124 @@
+/*FONT FACES*/
+
+@font-face {
+  font-family: 'NunitoSans';
+  font-weight: 800;
+  src: local('NunitoSans'), url(../fonts/NunitoSans-ExtraBold.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'NunitoSans';
+  font-weight: 400;
+  src: local('NunitoSans'), url(../fonts/NunitoSans-Regular.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'NunitoSans';
+  font-weight: 200;
+  src: local('NunitoSans'), url(../fonts/NunitoSans-ExtraLight.ttf) format('truetype');
+}
+
+/*FONT FACES*/
+
+/*CSS COMUN*/
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "NunitoSans", sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+html, body, #root, #root>div {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+#root {
+  background-color: #ffffff;
+}
+
+input:-webkit-autofill {
+  box-shadow: 0 0 0 50px white inset !important;
+  -webkit-box-shadow: 0 0 0 50px white inset !important;
+  -webkit-text-fill-color: rgba(0, 0, 0, 0.85) !important;
+}
+
+input:-webkit-autofill:focus {
+  box-shadow: 0 0 0 50px white inset !important;
+  -webkit-box-shadow: 0 0 0 50px white inset !important;
+  -webkit-text-fill-color: rgba(0, 0, 0, 0.85) !important;
+}
+
+.notifZ.info .ant-notification-notice-icon {
+    color: #0f5d94;
+}
+
+.notifZ.success .ant-notification-notice-icon {
+    color: #28a745;
+}
+
+.notifZ.warning .ant-notification-notice-icon {
+    color: #ffc107;
+}
+
+.notifZ.error .ant-notification-notice-icon {
+    color: #dc3545;
+}
+
+/*CSS COMUN*/
+
+/*RESPONSIVE*/
+
+@media only screen and (min-width:1200px) {
+
+  /*SCROLLBAR*/
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #cfcfcf;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+  /*SCROLLBAR*/
+}
+
+/*RESPONSIVE*/
+
+@media screen and (max-width: 1199px) {
+  
+}
+
+@media only screen and (max-width:991px) {
+  
+}
+
+@media only screen and (min-width:992px) {
+ 
+}
+
+@media screen and (max-width: 991px) {
+  
+}
+
+@media screen and (max-width: 767px) {
+ 
+}
+
+@media only screen and (max-width:575px) {
+  
+}
+
+/*RESPONSIVE*/
