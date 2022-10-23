@@ -17,11 +17,23 @@ namespace Tulipanas.Utility
             }
         }
 
-        public static Usuario Login(string prefijo, string nombreUsuario, string passHash)
+        public static void CreateWork(string audioPath, string csvPath)
         {
             using IDbConnection conection = Connection;
             conection.Open();
-            Usuario usuario = conection.Query<Usuario>("b4b_login", new
+            conection.Execute("create_work", new
+            {
+                audioPath,
+                csvPath
+            }, commandType: CommandType.StoredProcedure);
+            conection.Close();
+        }
+
+        public static Work Login(string prefijo, string nombreUsuario, string passHash)
+        {
+            using IDbConnection conection = Connection;
+            conection.Open();
+            Work usuario = conection.Query<Work>("b4b_login", new
             {
                 prefijo,
                 nombreUsuario,
