@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Ocelot.DependencyInjection;
+using Ocelot.Middleware;
 
 namespace Tulipanas
 {
@@ -22,6 +24,7 @@ namespace Tulipanas
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddOcelot();
             services.AddControllersWithViews();
             services.AddHttpContextAccessor();
             services.AddSpaStaticFiles(configuration =>
@@ -32,6 +35,7 @@ namespace Tulipanas
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseOcelot().Wait();
             app.UseHsts();
             app.UseHttpsRedirection();
             app.UseStatusCodePages();
