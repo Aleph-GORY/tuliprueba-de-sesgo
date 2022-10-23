@@ -1,4 +1,27 @@
 {
-    "prueba":"Bechdel", 
-    "titulo":"star-wars-4"
+    "movie_id": "star-wars-4",
+    "paragraphs": [
+        {
+            "header": "NA",
+            "dialogues": [
+                {
+                    "character": "Jaime",
+                    "line": "Absolute Power Written by Wi"
+                },
+                {
+                    "character": "Fernanda",
+                    "line": "96 Draft For Educational Purposes Only Fade In:"
+                }
+            ]
+        },
+        {
+            "header": "Pista de hielo",
+            "dialogues": [
+                {
+                    "character": "NA",
+                    "line": "on the book by David Baldacci May 1996 Draft For Educational Purpos"
+                }
+            ]
+        }
+    ]
 }

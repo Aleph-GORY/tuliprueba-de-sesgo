@@ -5,6 +5,9 @@ logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
 def handler(event, context):
-    logger.info(f"Ejecutando la prueba {event['prueba']}, a la película {event['titulo']}")
-    return 'Hello from AWS Lambda using Python' + sys.version + '!'
+    logger.info(f"Ejecutando la prueba Bechdel/Wallace, a la película {event.get('movie_id')}")
+    return {
+        "results": '¡RESULTADOS DE LA TULIPRUEBA A LA PELÍCULA ' + event.get('movie_id') + '!',
+        "dialogues": len(event.get('paragraphs', []))
+    }
 

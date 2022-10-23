@@ -1,0 +1,1 @@
+aws lambda update-function-code --region us-east-1 --function-name tuliprueba-de-sesgo --image-uri $1
