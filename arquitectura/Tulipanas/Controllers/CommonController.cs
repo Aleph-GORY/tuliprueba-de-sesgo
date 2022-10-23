@@ -45,12 +45,12 @@ namespace Tulipanas.Controllers
         }
 
         [HttpGet, Route("api/[controller]/GetData")]
-        public IActionResult GetData()
+        public async Task<IActionResult> GetDataAsync()
         {
             List<Work> data = AccessRepository.GetSuccess();
             foreach (Work work in data)
             {
-                work.Result = Tools.GetS3FileAsync(work.CsvPath);
+                work.Result = await Tools.GetS3FileAsync(work.CsvPath);
             }
             return Content(Tools.JsonResult(data, "Ok"));
         }

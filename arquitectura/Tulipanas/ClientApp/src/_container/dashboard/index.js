@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col, Button, Modal, Empty } from 'antd';
+import { Row, Col, Button, Modal, Empty, Card, Skeleton } from 'antd';
 import { UploadFile, GetData } from '../../_action/Common';
 import { FileUpload } from '../Combos';
 import Layout from '../Layout';
@@ -11,6 +11,7 @@ class DashboardContainer extends Component {
         super(props);
         this.state = {
             loadingUpload: false,
+            loadingData: false,
             showModal: false,
             data: []
         };
@@ -34,12 +35,11 @@ class DashboardContainer extends Component {
             });
         },
         getData: () => {
+            this.setState({ loadingData: true });
             GetData((result) => {
-                console.log(result)
-                Alert("Los resultados pueden tardan en aparecer, favor de esperar un poco.", "success");
-                this.setState({ data: result.data });
+                this.setState({ data: result.data, loadingData: false });
             }, () => {
-                this.setState({ data: [] });
+                this.setState({ data: [], loadingData: false });
                 Alert("Ocurrio un error al procesar.", "error");
             });
         },
@@ -54,7 +54,7 @@ class DashboardContainer extends Component {
 
     render() {
         const { setFile, openModal, closeModal } = this.accion;
-        const { loadingUpload, showModal, data } = this.state;
+        const { loadingUpload, loadingData, showModal, data } = this.state;
 
         return (<Layout>
             <Row className="mainPage">
@@ -78,8 +78,18 @@ class DashboardContainer extends Component {
                     <Button onClick={openModal}>VER RESULTADOS</Button>
                 </Col>
                 <Modal title="TODOS LOS RESULTADOS" open={showModal} onCancel={closeModal} onOk={closeModal}>
-                    {data.length === 0 ? <Empty /> : <>
-                        <h1>la dataaa</h1>
+                    {loadingData ? <Skeleton /> : <>
+                        {data.length === 0 ? <Empty /> : <>
+                            <Row gutter={16}>
+                                {data.map((e) => <>
+                                    <Col xs={24} span={8} key={e.CsvPath} style={{ marginBottom: 20 }}>
+                                        <Card title={e.CsvPath} bordered>
+                                            {e.Result}
+                                        </Card>
+                                    </Col>
+                                </>)}
+                            </Row>
+                        </>}
                     </>}
                 </Modal>
             </Row>
