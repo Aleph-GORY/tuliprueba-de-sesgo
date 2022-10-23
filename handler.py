@@ -18,12 +18,16 @@ def handler(event, context):
     movie_json = json.loads(event)
     #male_words.update(data['coref'])
     convo_topic = []
+    total_pg = len(movie_json['paragraphs'])
+    total_dg = 0
 
     for pg in movie_json['paragraphs']:
         # Go through each paragraph
 
         # Init confirmed_convos set to keep track of already seen lines to avoid duplicate convos
         confirmed_convos = set()
+        total_dg += len(pg['dialogues'])
+        # logger.info(total_dg)
             
         for i, dialogue in enumerate(pg['dialogues']):
             # if current line is female
@@ -69,5 +73,5 @@ def handler(event, context):
     
     convo_topic = [i for i in convo_topic if i['topic'] != 'duplicate']
         
-    report = analysis.describe(convo_topic)
+    report = analysis.describe(total_dg, convo_topic)
     return report
