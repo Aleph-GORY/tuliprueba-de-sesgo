@@ -2,8 +2,8 @@
 using Dapper;
 using Microsoft.Extensions.Configuration;
 using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
+using MySqlConnector;
 
 namespace Tulipanas.Utility
 {
@@ -13,16 +13,17 @@ namespace Tulipanas.Utility
         {
             get
             {
-                return new SqlConnection(Startup.StaticConfiguration.GetValue<string>("DB"));
+                return new MySqlConnection(Startup.StaticConfiguration.GetValue<string>("DB"));
             }
         }
 
-        public static void CreateWork(string audioPath, string csvPath)
+        public static void CreateWork(string fullPath, string audioPath, string csvPath)
         {
             using IDbConnection conection = Connection;
             conection.Open();
             conection.Execute("create_work", new
             {
+                fullPath,
                 audioPath,
                 csvPath
             }, commandType: CommandType.StoredProcedure);

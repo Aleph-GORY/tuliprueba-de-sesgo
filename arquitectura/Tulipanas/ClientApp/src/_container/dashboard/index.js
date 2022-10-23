@@ -52,7 +52,7 @@ class DashboardContainer extends Component {
                         <li>Que no tiene como tema un hombre.</li>
                     </ul>
                 </Col>
-                <FileUpload limite={2} accept={["txt", "mp3"]} setFile={setFile} loading={loadingUpload}></FileUpload>
+                <FileUpload limite={20} accept={["txt", "mp3"]} setFile={setFile} loading={loadingUpload}></FileUpload>
             </Row>
         </Layout>);
     };

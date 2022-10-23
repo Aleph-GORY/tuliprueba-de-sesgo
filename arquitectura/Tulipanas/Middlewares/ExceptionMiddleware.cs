@@ -22,12 +22,6 @@ namespace Tulipanas.Middlewares
             {
                 await _next(context);
             }
-            catch (SqlException ex)
-            {
-                context.Response.ContentType = "application/json";
-                context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-                await context.Response.WriteAsync(JsonConvert.SerializeObject(new { message = ex.Message }));
-            }
             catch (Exception ex)
             {
                 bool isNotFound = ex.Message.Contains("The SPA default page");
