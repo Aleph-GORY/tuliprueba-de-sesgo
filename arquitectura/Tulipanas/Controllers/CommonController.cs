@@ -1,7 +1,11 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
 using System.Threading.Tasks;
+using Tulipanas.Models;
 using Tulipanas.Utility;
 
 
@@ -11,7 +15,7 @@ namespace Tulipanas.Controllers
     public class CommonController : ControllerBase
     {
         [HttpPost, Route("api/[controller]/UploadFile")]
-        public void UploadFileAsync(IFormFile file)
+        public async Task UploadFileAsync(IFormFile file)
         {
             DateTime dt = DateTime.Now;
             string path = dt.Year.ToString() + "-" + dt.Month.ToString() + "-" + dt.Day.ToString() + "-" + dt.Millisecond.ToString(), fileName = file.FileName, fullPath = path + "/" + fileName;
@@ -26,9 +30,29 @@ namespace Tulipanas.Controllers
             }
             else
             {
-                AccessRepository.CreateWork(path, null, null);
+                string pathExit = path + "/result.json";
+                var result = new StringBuilder();
+                using (var reader = new StreamReader(file.OpenReadStream()))
+                {
+                    while (reader.Peek() >= 0)
+                        result.AppendLine(reader.ReadLine());
+                }
+                string lambdaRes = await Tools.GetLambdaAsync(result.ToString());
+                byte[] bytes = Encoding.ASCII.GetBytes(lambdaRes);
+                Tools.UploadInputFileToS3(pathExit, bytes);
+                AccessRepository.CreateWork(path, null, pathExit);
             }
+        }
 
+        [HttpGet, Route("api/[controller]/GetData")]
+        public IActionResult GetData()
+        {
+            List<Work> data = AccessRepository.GetSuccess();
+            foreach (Work work in data)
+            {
+                work.Result = Tools.GetS3FileAsync(work.CsvPath);
+            }
+            return Content(Tools.JsonResult(data, "Ok"));
         }
     }
 }

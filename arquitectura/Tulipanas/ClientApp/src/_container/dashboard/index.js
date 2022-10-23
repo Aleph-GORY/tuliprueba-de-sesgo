@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Row, Col } from 'antd';
-import { UploadFile } from '../../_action/Common';
+import { Row, Col, Button, Modal, Empty } from 'antd';
+import { UploadFile, GetData } from '../../_action/Common';
 import { FileUpload } from '../Combos';
 import Layout from '../Layout';
 import { Alert } from '../../_utility';
@@ -9,7 +9,11 @@ class DashboardContainer extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { loadingUpload: false };
+        this.state = {
+            loadingUpload: false,
+            showModal: false,
+            data: []
+        };
     }
 
     accion = {
@@ -28,12 +32,29 @@ class DashboardContainer extends Component {
                 this.setState({ loadingUpload: false });
                 Alert("Ocurrio un error al procesar.", "error");
             });
+        },
+        getData: () => {
+            GetData((result) => {
+                console.log(result)
+                Alert("Los resultados pueden tardan en aparecer, favor de esperar un poco.", "success");
+                this.setState({ data: result.data });
+            }, () => {
+                this.setState({ data: [] });
+                Alert("Ocurrio un error al procesar.", "error");
+            });
+        },
+        openModal: () => {
+            this.setState({ showModal: true });
+            this.accion.getData();
+        },
+        closeModal: () => {
+            this.setState({ showModal: false });
         }
     };
 
     render() {
-        const { setFile } = this.accion;
-        const { loadingUpload } = this.state;
+        const { setFile, openModal, closeModal } = this.accion;
+        const { loadingUpload, showModal, data } = this.state;
 
         return (<Layout>
             <Row className="mainPage">
@@ -53,6 +74,14 @@ class DashboardContainer extends Component {
                     </ul>
                 </Col>
                 <FileUpload limite={20} accept={["txt", "mp3"]} setFile={setFile} loading={loadingUpload}></FileUpload>
+                <Col xs={24} style={{ marginTop: 20 }}>
+                    <Button onClick={openModal}>VER RESULTADOS</Button>
+                </Col>
+                <Modal title="TODOS LOS RESULTADOS" open={showModal} onCancel={closeModal} onOk={closeModal}>
+                    {data.length === 0 ? <Empty /> : <>
+                        <h1>la dataaa</h1>
+                    </>}
+                </Modal>
             </Row>
         </Layout>);
     };

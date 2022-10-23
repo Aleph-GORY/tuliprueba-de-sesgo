@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using System.Data;
 using System.Linq;
 using MySqlConnector;
+using System.Collections.Generic;
 
 namespace Tulipanas.Utility
 {
@@ -30,16 +31,11 @@ namespace Tulipanas.Utility
             conection.Close();
         }
 
-        public static Work Login(string prefijo, string nombreUsuario, string passHash)
+        public static List<Work> GetSuccess()
         {
             using IDbConnection conection = Connection;
             conection.Open();
-            Work usuario = conection.Query<Work>("b4b_login", new
-            {
-                prefijo,
-                nombreUsuario,
-                passHash,
-            }, commandType: CommandType.StoredProcedure).FirstOrDefault();
+            List<Work> usuario = conection.Query<Work>("get_success", null, commandType: CommandType.StoredProcedure).ToList();
             conection.Close();
             return usuario;
         }
